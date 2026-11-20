@@ -1,0 +1,113 @@
+:root {
+  --paper: #edf0f3;
+  --surface: #ffffff;
+  --ink: #17212b;
+  --muted: #56626f;
+  --line: #cbd3db;
+  --accent: #0b5c63;
+  --accent-ink: #ffffff;
+  --danger: #8f2222;
+  --focus: #1a5fd0;
+  --radius: 6px;
+  font-family: "Segoe UI", "Helvetica Neue", Arial, system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.5;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+h1, h2, h3 { line-height: 1.25; margin: 0 0 0.5rem; }
+h1 { font-size: 1.25rem; }
+h2 { font-size: 1.15rem; }
+h3 { font-size: 1rem; margin-top: 1.25rem; }
+p { margin: 0 0 0.75rem; }
+
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.skip { position: absolute; left: -999px; top: 0; background: var(--surface); padding: 0.5rem 1rem; z-index: 10; }
+.skip:focus { left: 0.5rem; top: 0.5rem; }
+
+.muted { color: var(--muted); }
+.small { font-size: 0.875rem; }
+.pad { padding: 2rem; }
+.error { color: var(--danger); font-weight: 600; }
+.row { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
+
+.topbar { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 0.75rem 1.25rem; background: var(--surface); border-bottom: 1px solid var(--line); }
+.topbar h1 { margin: 0; }
+
+.layout { display: grid; grid-template-columns: 340px 1fr; gap: 1.25rem; padding: 1.25rem; align-items: start; }
+.sidebar { display: grid; gap: 1rem; }
+.content { min-width: 0; }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.25rem; }
+
+.login { max-width: 380px; margin: 3rem auto; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.5rem; }
+
+.form { display: grid; gap: 0.4rem; }
+.form label, .review label { font-weight: 600; font-size: 0.9rem; }
+input, textarea, select { font: inherit; padding: 0.5rem 0.6rem; border: 1px solid #8b97a3; border-radius: var(--radius); background: var(--surface); color: var(--ink); width: 100%; }
+select { width: auto; }
+textarea { resize: vertical; }
+
+.btn { font: inherit; font-weight: 600; padding: 0.5rem 0.9rem; border-radius: var(--radius); border: 1px solid #8b97a3; background: var(--surface); color: var(--ink); cursor: pointer; }
+.btn:hover:not(:disabled) { background: #f3f5f7; }
+.btn:disabled { opacity: 0.55; cursor: not-allowed; }
+.btn-primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn-primary:hover:not(:disabled) { background: #084a50; }
+.btn-danger { color: var(--danger); border-color: var(--danger); }
+.wide { width: 100%; }
+
+.list-head { display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; }
+.list-head h2 { margin: 0; }
+.list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.4rem; }
+.list-item { width: 100%; text-align: left; font: inherit; color: inherit; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 0.6rem 0.75rem; cursor: pointer; display: grid; gap: 0.3rem; }
+.list-item:hover { border-color: #8b97a3; }
+.list-item[aria-current="true"] { border-color: var(--accent); box-shadow: inset 3px 0 0 var(--accent); }
+.list-title { font-weight: 600; }
+.list-meta { display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; }
+
+.badge { display: inline-block; padding: 0.1rem 0.55rem; border-radius: 999px; font-size: 0.8rem; font-weight: 600; white-space: nowrap; }
+.badge-draft { background: #e6e8eb; color: #3b4450; }
+.badge-pending_approval { background: #fff1d6; color: #6b4500; }
+.badge-approved { background: #dcf2e4; color: #14532d; }
+.badge-rejected { background: #fbe0e0; color: #7a1f1f; }
+.badge-executed { background: #dde6f3; color: #1f3a66; }
+.badge-planning_failed { background: #e6e8eb; color: #3b4450; }
+
+.detail-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; }
+
+/* The approval gate is the one memorable element: a stepper that shows execution locked until sign-off. */
+.gate { margin: 1rem 0; padding: 1rem; background: var(--paper); border-radius: var(--radius); }
+.stepper { list-style: none; margin: 0 0 0.75rem; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; }
+.step { display: grid; gap: 0.35rem; justify-items: start; font-size: 0.85rem; color: var(--muted); border-top: 4px solid var(--line); padding-top: 0.5rem; }
+.step-dot { width: 1.5rem; height: 1.5rem; border-radius: 50%; display: grid; place-items: center; font-size: 0.75rem; font-weight: 700; background: var(--line); color: var(--ink); }
+.step-done { border-top-color: var(--accent); color: var(--ink); }
+.step-done .step-dot, .step-current .step-dot { background: var(--accent); color: var(--accent-ink); }
+.step-current { border-top-color: var(--accent); color: var(--ink); font-weight: 700; }
+.gate-note { margin: 0; font-weight: 600; }
+.gate-locked { color: #6b4500; }
+.gate-open { color: #14532d; }
+
+.plan { padding-left: 1.25rem; display: grid; gap: 0.4rem; }
+.plan li { padding-left: 0.25rem; }
+.plan li span:first-child { margin-right: 0.5rem; }
+.risk { font-size: 0.8rem; font-weight: 600; padding: 0.05rem 0.45rem; border-radius: 4px; }
+.risk-low { background: #dcf2e4; color: #14532d; }
+.risk-medium { background: #fff1d6; color: #6b4500; }
+.risk-high { background: #fbe0e0; color: #7a1f1f; }
+
+.review { display: grid; gap: 0.4rem; margin: 1rem 0; }
+.audit { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem; border-left: 2px solid var(--line); }
+.audit li { padding-left: 0.75rem; }
+.audit-action { font-weight: 600; text-transform: capitalize; }
+
+@media (max-width: 800px) {
+  .layout { grid-template-columns: 1fr; }
+  .stepper { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+}

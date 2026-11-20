@@ -1,0 +1,7 @@
+[
+  {"title": "Resize cache cluster", "description": "Scale the cache cluster from 3 to 5 nodes."},
+  {"title": "Rotate TLS certificates", "description": "Rotate expiring TLS certificates on the edge load balancers."},
+  {"title": "Drop legacy table", "description": "Drop the unused legacy_orders table in production database."},
+  {"title": "Add monitoring alert", "description": "Add a latency alert for the checkout service at p99 over 800ms."},
+  {"title": "Upgrade base image", "description": "Upgrade the base container image for the reporting service."}
+]
